@@ -1,7 +1,3 @@
-provider "azurerm" {
-  version = "~> 0.3"
-}
-
 module "os" {
   source       = "./os"
   vm_os_simple = "${ var.vm_os_simple }"
