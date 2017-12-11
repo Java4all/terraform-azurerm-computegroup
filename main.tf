@@ -7,7 +7,7 @@ resource "azurerm_virtual_machine_scale_set" "vm-linux" {
   count               = "${ contains(list("${var.vm_os_simple}","${var.vm_os_offer}"), "WindowsServer") ? 0 : 1 }"
   name                = "${var.vmscaleset_name}"
   location            = "${var.location}"
-  resource_group_name = "${azurerm_resource_group.vmss.name}"
+  resource_group_name = "${var.resource_group_name}"
   upgrade_policy_mode = "Manual"
   tags                = "${var.tags}"
 
@@ -29,7 +29,7 @@ resource "azurerm_virtual_machine_scale_set" "vm-linux" {
     name              = ""
     caching           = "ReadWrite"
     create_option     = "FromImage"
-    managed_disk_type = "${ var.managed_disk_type }"
+    managed_disk_type = "${var.managed_disk_type}"
   }
 
   storage_profile_data_disk {
@@ -83,7 +83,7 @@ resource "azurerm_virtual_machine_scale_set" "vm-windows" {
   count               = "${ contains(list("${var.vm_os_simple}","${var.vm_os_offer}"), "WindowsServer") ? 1 : 0 }"
   name                = "${var.vmscaleset_name}"
   location            = "${var.location}"
-  resource_group_name = "${azurerm_resource_group.vmss.name}"
+  resource_group_name = "${var.resource_group_name}"
   upgrade_policy_mode = "Manual"
   tags                = "${var.tags}"
 
@@ -105,7 +105,7 @@ resource "azurerm_virtual_machine_scale_set" "vm-windows" {
     name              = ""
     caching           = "ReadWrite"
     create_option     = "FromImage"
-    managed_disk_type = "${ var.managed_disk_type }"
+    managed_disk_type = "${var.managed_disk_type}"
   }
 
   storage_profile_data_disk {
