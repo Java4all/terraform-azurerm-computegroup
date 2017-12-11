@@ -3,12 +3,6 @@ module "os" {
   vm_os_simple = "${ var.vm_os_simple }"
 }
 
-resource "azurerm_resource_group" "vmss" {
-  name     = "${var.resource_group_name}"
-  location = "${var.location}"
-  tags     = "${var.tags}"
-}
-
 resource "azurerm_virtual_machine_scale_set" "vm-linux" {
   count               = "${ contains(list("${var.vm_os_simple}","${var.vm_os_offer}"), "WindowsServer") ? 0 : 1 }"
   name                = "${var.vmscaleset_name}"
