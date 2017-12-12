@@ -50,7 +50,7 @@ resource "azurerm_virtual_machine_scale_set" "vm-linux" {
 
     ssh_keys {
       path     = "/home/${var.admin_username}/.ssh/authorized_keys"
-      key_data = "${file("${var.ssh_key}")}"
+      key_data = "${var.ssh_key}"
     }
   }
 
