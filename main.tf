@@ -73,7 +73,10 @@ resource "azurerm_virtual_machine_scale_set" "vm-linux" {
 
     settings = <<SETTINGS
     {
-        "commandToExecute": "${var.cmd_extension}"
+        "commandToExecute": "${var.cmd_extension}",
+         "fileUris": [
+          "${var.cmd_script}"
+         ]
     }
     SETTINGS
   }
