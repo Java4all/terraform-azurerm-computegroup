@@ -39,8 +39,7 @@ variable "admin_password" {
 }
 
 variable "ssh_key" {
-  description = "Path to the public key to be used for ssh access to the VM"
-  default     = "~/.ssh/id_rsa.pub"
+  description = "Public key to be used for ssh access to the VM"
 }
 
 variable "nb_instance" {
@@ -98,7 +97,7 @@ variable "cmd_extension" {
 
 variable "cmd_script" {
   description = "Script to download which can be executed by the custom script extension"
-  default = ""
+  default     = ""
 }
 
 variable "tags" {
